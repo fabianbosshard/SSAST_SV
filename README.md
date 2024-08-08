@@ -23,6 +23,8 @@ Navigate to the `utils/data_downloading` directory:
    cd utils/data_downloading
    ```
 
+### LibriSpeech
+
 Start a screen session:
    ```bash
    screen
@@ -30,7 +32,7 @@ Start a screen session:
 
 Start a SLURM session:
    ```bash
-   srun --job-name=xbfr_data_download --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
+   srun --job-name=xbfr_data_download_librispeech --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
    ```
 
 Build the Docker image (paste as one line):
@@ -38,25 +40,105 @@ Build the Docker image (paste as one line):
    docker build \
   --build-arg USER_ID=$(id -u) \
   --build-arg GROUP_ID=$(id -g) \
-  -t xbfr_data_download_img .
+  -t xbfr_data_download_librispeech_img .
    ```
 
 Run the Docker container (paste as one line):
    ```bash
    nvidia-docker run --rm -it \
     --shm-size=16g \
-    --name xbfr_data_download \
+    --name xbfr_data_download_librispeech \
     --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
     --volume /raid/xbfr:/raid/xbfr \
     --env SLURM_JOB_ID \
-    xbfr_data_download_img bash
+    xbfr_data_download_librispeech_img bash
    ```
 
 Inside the Docker container, run the download script:
    ```bash
-   cd /workspace
-   ./download_data.sh librispeech  # or voxceleb or audioset
+   ./download_data.sh librispeech
    ```
+
+Detach from the screen session by pressing `Ctrl + A` followed by `D`.
+
+### VoxCeleb
+
+Start a screen session:
+   ```bash
+   screen
+   ```
+
+Start a SLURM session:
+   ```bash
+   srun --job-name=xbfr_data_download_voxceleb --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
+   ```
+
+Build the Docker image (paste as one line):
+   ```bash
+   docker build \
+  --build-arg USER_ID=$(id -u) \
+  --build-arg GROUP_ID=$(id -g) \
+  -t xbfr_data_download_voxceleb_img .
+   ```
+
+Run the Docker container (paste as one line):
+   ```bash
+   nvidia-docker run --rm -it \
+    --shm-size=16g \
+    --name xbfr_data_download_voxceleb \
+    --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
+    --volume /raid/xbfr:/raid/xbfr \
+    --env SLURM_JOB_ID \
+    xbfr_data_download_voxceleb_img bash
+   ```
+
+Inside the Docker container, run the download script:
+   ```bash
+   ./download_data.sh voxceleb
+   ```
+
+Detach from the screen session by pressing `Ctrl + A` followed by `D`.
+
+### AudioSet
+
+Start a screen session:
+   ```bash
+   screen
+   ```
+
+Start a SLURM session:
+   ```bash
+   srun --job-name=xbfr_data_download_audioset --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
+   ```
+
+Build the Docker image (paste as one line):
+   ```bash
+   docker build \
+  --build-arg USER_ID=$(id -u) \
+  --build-arg GROUP_ID=$(id -g) \
+  -t xbfr_data_download_audioset_img .
+   ```
+
+Run the Docker container (paste as one line):
+   ```bash
+   nvidia-docker run --rm -it \
+    --shm-size=16g \
+    --name xbfr_data_download_audioset \
+    --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
+    --volume /raid/xbfr:/raid/xbfr \
+    --env SLURM_JOB_ID \
+    xbfr_data_download_audioset_img bash
+   ```
+
+Inside the Docker container, run the download script:
+   ```bash
+   ./download_data.sh audioset
+   ```
+
+Detach from the screen session by pressing `Ctrl + A` followed by `D`.
+
+
+### Exiting the Sessions
 
 Exit the Docker container:
    ```bash
@@ -72,5 +154,3 @@ Exit the screen session:
    ```bash
    exit
    ```
-
-Repeat the process for the other datasets (VoxCeleb and AudioSet) by changing the argument of the `download_data.sh` script accordingly.
