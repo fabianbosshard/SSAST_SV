@@ -23,7 +23,9 @@ Navigate to the `utils/data_downloading` directory:
    cd utils/data_downloading
    ```
 
-### LibriSpeech
+### Datasets
+
+#### LibriSpeech
 
 Start a screen session:
    ```bash
@@ -35,7 +37,7 @@ Start a SLURM session:
    srun --job-name=xbfr_data_download_librispeech --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
    ```
 
-Build the Docker image (paste as one line):
+Build the Docker image:
    ```bash
    docker build \
   --build-arg USER_ID=$(id -u) \
@@ -43,7 +45,7 @@ Build the Docker image (paste as one line):
   -t xbfr_data_download_librispeech_img .
    ```
 
-Run the Docker container (paste as one line):
+Run the Docker container:
    ```bash
    nvidia-docker run --rm -it \
     --shm-size=16g \
@@ -61,7 +63,7 @@ Inside the Docker container, run the download script:
 
 Detach from the screen session by pressing `Ctrl + A` followed by `D`.
 
-### VoxCeleb
+#### VoxCeleb
 
 Start a screen session:
    ```bash
@@ -73,7 +75,7 @@ Start a SLURM session:
    srun --job-name=xbfr_data_download_voxceleb --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
    ```
 
-Build the Docker image (paste as one line):
+Build the Docker image:
    ```bash
    docker build \
   --build-arg USER_ID=$(id -u) \
@@ -81,7 +83,7 @@ Build the Docker image (paste as one line):
   -t xbfr_data_download_voxceleb_img .
    ```
 
-Run the Docker container (paste as one line):
+Run the Docker container:
    ```bash
    nvidia-docker run --rm -it \
     --shm-size=16g \
@@ -99,7 +101,7 @@ Inside the Docker container, run the download script:
 
 Detach from the screen session by pressing `Ctrl + A` followed by `D`.
 
-### AudioSet
+#### AudioSet
 
 Start a screen session:
    ```bash
@@ -111,23 +113,23 @@ Start a SLURM session:
    srun --job-name=xbfr_data_download_audioset --pty --ntasks=1 --cpus-per-task=4 --mem=16G --gres=gpu:0 bash
    ```
 
-Build the Docker image (paste as one line):
+Build the Docker image:
    ```bash
    docker build \
-  --build-arg USER_ID=$(id -u) \
-  --build-arg GROUP_ID=$(id -g) \
-  -t xbfr_data_download_audioset_img .
+   --build-arg USER_ID=$(id -u) \
+   --build-arg GROUP_ID=$(id -g) \
+   -t xbfr_data_download_audioset_img .
    ```
 
-Run the Docker container (paste as one line):
+Run the Docker container:
    ```bash
    nvidia-docker run --rm -it \
-    --shm-size=16g \
-    --name xbfr_data_download_audioset \
-    --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
-    --volume /raid/xbfr:/raid/xbfr \
-    --env SLURM_JOB_ID \
-    xbfr_data_download_audioset_img bash
+   --shm-size=16g \
+   --name xbfr_data_download_audioset \
+   --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
+   --volume /raid/xbfr:/raid/xbfr \
+   --env SLURM_JOB_ID \
+   xbfr_data_download_audioset_img bash
    ```
 
 Inside the Docker container, run the download script:
@@ -142,8 +144,9 @@ Detach from the screen session by pressing `Ctrl + A` followed by `D`.
 
 After a while, the datasets will have been downloaded. Reattach to the screen sessions using their respective identifiers:
    ```bash
-   screen -r <screen_id>
+   screen -r [pid.]tty.host
    ```
+
 Follow the instructions below to exit the Docker container, SLURM session, and screen session.
 
 Exit the Docker container:
@@ -162,3 +165,49 @@ Exit the screen session:
    ```
 
 Repeat these steps for each screen session.
+
+
+### Checking Download Progress
+
+To monitor download progress:
+
+Navigate to the directory:
+   ```bash
+   cd utils/data_downloading
+   ```
+
+Start a SLURM session:
+   ```bash
+   srun --job-name=xbfr_progress_monitoring --pty --ntasks=1 --cpus-per-task=2 --mem=8G --gres=gpu:0 bash
+   ```
+
+Build the Docker image:
+   ```bash
+   docker build -f Dockerfile.analysis \
+   --build-arg USER_ID=$(id -u) \
+   --build-arg GROUP_ID=$(id -g) \
+   -t xbfr_progress_monitoring_img .
+   ```
+
+Run the analysis:
+   ```bash
+   nvidia-docker run --rm -it \
+   --name xbfr_progress_monitoring \
+   --volume /cluster/home/xbfr/SSAST_SV:/workspace/SSAST_SV \
+   --volume /raid/xbfr:/raid/xbfr \
+   --env SLURM_JOB_ID \
+   xbfr_progress_monitoring_img bash
+   ```
+
+Inside the Docker container, run the analysis python script:
+   ```bash
+   python3 print_info.py
+   ```
+
+Exit the container and SLURM session:
+   ```bash
+   exit
+   exit
+   ```
+
+Repeat these steps periodically to track download progress.
