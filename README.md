@@ -140,6 +140,12 @@ Detach from the screen session by pressing `Ctrl + A` followed by `D`.
 
 ### Exiting the Sessions
 
+After a while, the datasets will have been downloaded. Reattach to the screen sessions using their respective identifiers:
+   ```bash
+   screen -r <screen_id>
+   ```
+Follow the instructions below to exit the Docker container, SLURM session, and screen session.
+
 Exit the Docker container:
    ```bash
    exit
@@ -154,3 +160,5 @@ Exit the screen session:
    ```bash
    exit
    ```
+
+Repeat these steps for each screen session.
