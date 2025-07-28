@@ -1,0 +1,51 @@
+\begin{titlepage}
+\newcommand{\HRuleThick}{\rule{\linewidth}{0.6mm}} % Horizontal line command
+\newcommand{\HRule}{\rule{\linewidth}{0.6mm}} % Horizontal line command
+
+\centering
+\includegraphics[width=8.6cm]{img/Logo_CAI/Druckaufloesung/A4-en-zhaw-cai-sw-ohne-byline.eps}\\[2.8cm]
+
+\center % Center page content
+
+\textsc{\large Bachelor's Thesis}\\[0.3cm] 
+
+% Title Section
+\makeatletter
+\HRuleThick \\[0.3cm]
+{\huge \bfseries \myTitle}\\[0.1cm]
+\HRule \\[2.5cm]
+
+% Change footnote symbol to a star
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Author and Supervisor Section
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Fabian Bosshard\footnotemark[1]\\
+Andrin Fassbind\footnotemark[1]
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Prof. Dr. Thilo Stadelmann\\
+\end{flushright}
+\end{minipage}\\[3.0cm]
+
+% \begin{center} % Center the GitHub link
+% \large{\url{https://github.com/???????????????}}\\[2cm]
+% \end{center}
+
+
+% Date Section
+{\large \today}\\[2cm]
+
+\footnotetext[1]{Equal contribution.}
+
+% Reset footnote numbering and style if needed beyond this point
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+\end{titlepage}

@@ -1,0 +1,63 @@
+% Logo positioned absolutely
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, inner sep=0pt] at (current page.north west)[xshift=1.5cm, yshift=-2cm]{
+        \includegraphics[width=6cm]{img/Logo_SoE/Druck/CMYK/de-soe-cmyk.eps}
+    };
+\end{tikzpicture}
+
+
+\vspace{3.5cm}
+
+% Title
+\begin{center}
+    {\Large\textbf{DECLARATION OF ORIGINALITY}}\\[0.2cm]
+    \textbf{Bachelor’s Thesis at the School of Engineering}
+\end{center}
+
+\vspace{1cm}
+
+By submitting this Bachelor's thesis, the undersigned student confirms that this thesis is their own work and was written without the help of a third party. (Group works: the performance of the other group members is not considered as a third party).
+
+The student declares that all sources in the text (including Internet pages) and appendices have been correctly disclosed. This means that there has been no plagiarism, i.e., no sections of the Bachelor's thesis have been partially or wholly taken from other texts and represented as the student’s own work or included without being correctly referenced.
+
+\textcolor{red}{Any misconduct will be dealt with according to paragraphs 39 and 40 of the General Academic Regulations for Bachelor's and Master's Degree courses at the Zurich University of Applied Sciences (Rahmenprüfungsordnung ZHAW (RPO)) and subject to the provisions for disciplinary action stipulated in the University regulations.}
+
+
+
+\vspace{2.7cm}
+
+% City, Date and Name of Student
+\begin{minipage}[t]{0.48\textwidth}
+    Date:\\[0.7cm]
+    ...................................................................
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+    Signature:\\[0.7cm]
+    ...................................................................\\[0.7cm]
+    ...................................................................
+\end{minipage}
+
+% Signature images positioned with TikZ
+\begin{tikzpicture}[remember picture, overlay]
+    % Adjust the 'xshift' and 'yshift' to position your first signature
+    \node[anchor=south, inner sep=0pt] at (current page.north east)[xshift=-8.6cm, yshift=-21.3cm]{
+        \includegraphics[width=3.6cm]{img/signature_fabian.png}
+    };
+    % Adjust the 'xshift' and 'yshift' to position your second signature
+    \node[anchor=south, inner sep=0pt] at (current page.north east)[xshift=-8.7cm, yshift=-22.65cm]{
+        \includegraphics[width=4.5cm]{img/signature_andrin.png}
+    };
+    % Adjust the 'xshift' and 'yshift' to position your second signature
+    \node[anchor=south, inner sep=0pt] at (current page.north east)[xshift=-16.2cm, yshift=-21.3cm]{
+        \includegraphics[width=4.7cm]{img/date_thesis.png}
+    };
+\end{tikzpicture}
+
+
+% Small text positioned absolutely at the bottom
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south west, inner sep=0pt] at (current page.south west)[xshift=1.5cm, yshift=2cm]{
+        \includegraphics[width=2cm]{img/Logo_SoE/cmyk_byline_e.eps}
+    };
+\end{tikzpicture}

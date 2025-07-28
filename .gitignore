@@ -40,3 +40,5 @@ src/models/copy_process_pretrain.py
 src/models/ast_model_uni.py
 src/finetune/superb/s3prl-master/*
 .idea/*
+bachelor-thesis/img/signature_andrin.png
+bachelor-thesis/img/signature_fabian.png

@@ -1,0 +1,12 @@
+% Abstract
+% - [typical architecture: ca. 1-2 sentences for each of motivation; problem statement; approach; results; relevency of results]
+
+Recent advancements in \gls{sv} technologies, particularly through \glspl{dnn}, have significantly contributed to the field of \gls{sr}. However, despite these advancements, challenges persist, particularly in terms of robustness in noisy environments and the effective modeling of \gls{sst} — attributes such as intonation and stress, which play a crucial role in human speaker recognition capabilities.
+
+This thesis investigates the effectiveness of transformer models, a type of \glspl{dnn} known for their success in \glspl{llm} like ChatGPT, in capturing these \gls{sst} for \gls{sv} tasks. We hypothesize that by pre-training transformer models to reconstruct hidden frames in speech spectrograms, the temporal nuances essential for accurate speaker recognition can be better captured. Our approach includes the development of a transformer-based \gls{sv} system that is pre-trained on a task that is expected to capture these \gls{sst} and subsequently fine-tuned on \gls{sv}.
+
+Initial experiments demonstrate that models trained on shuffled spectrograms, where temporal information is deliberately obscured, surprisingly do not show the expected decrease in performance. This suggests that these models may not rely on \gls{sst} as significantly as hypothesized and are capable of achieving robust \gls{sv} by predominantly learning from \gls{fba}, contrary to initial expectations.
+
+The findings of this research could potentially improve the understanding of the dependencies of \glspl{dnn} on temporal versus spectral features in \gls{sv} tasks and contribute to the development of more robust \gls{sv} systems capable of performing accurately under varied acoustic conditions.
+
+\glsresetall % Reset all glossary entries to ensure they are fully expanded at first use in the main document.

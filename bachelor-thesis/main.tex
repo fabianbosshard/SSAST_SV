@@ -1,0 +1,77 @@
+\documentclass[11pt, abstract=on, openany]{scrreprt}
+\newenvironment{acknowledgements}{%
+  \renewcommand{\abstractname}{Acknowledgements}%
+  \begin{abstract}
+}{%
+  \end{abstract}
+}
+
+% % Setup page dimensions using the geometry package
+\usepackage[a4paper, total={6.2in, 9.2in}]{geometry}
+
+
+\input{preamble.tex}
+
+\begin{document}
+
+% Title page and originality declaration
+\include{other_parts/titlepage}
+\clearpage
+\pagestyle{empty} % Disable page numbers
+\include{other_parts/declaration}
+\clearpage
+
+% Abstract and acknowledgements
+\selectlanguage{english}
+\begin{abstract}
+\input{other_parts/abstract}
+\end{abstract}
+
+\begin{acknowledgements}
+\input{other_parts/acknowledgements}
+\end{acknowledgements}
+
+% Roman numbering for initial pages
+\pagestyle{plain} 
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+
+% Abbreviations
+\printglossary[type=\acronymtype, title=List of Abbreviations]
+\clearpage
+
+% Arabic numbering for main content
+\pagenumbering{arabic}
+\chapter{Introduction}
+\label{chapter:introduction}
+\input{chapters/1introduction}
+\chapter{Foundations}
+\label{chapter:foundation}
+\input{chapters/2foundations}
+\chapter{Methods}
+\label{chapter:methods}
+\input{chapters/3methods}
+\chapter{Results}
+\label{chapter:results}
+\input{chapters/4results}
+\chapter{Conclusion}
+\label{chapter:conclusion}
+\input{chapters/5conclusion}
+
+% % Bibliography
+% \bibliographystyle{IEEEtran}
+% % \bibliographystyle{unsrt}
+% \bibliography{bibliography}
+
+% \addcontentsline{toc}{chapter}{Bibliography}
+
+% Bibliography - handled by biblatex
+\printbibliography[heading=bibintoc, title={Bibliography}]
+
+
+% Appendices
+\appendix
+\input{other_parts/appendices}
+
+\end{document}

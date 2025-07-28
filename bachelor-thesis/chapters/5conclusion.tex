@@ -1,0 +1,35 @@
+% 5. Conclusions
+% - Summary [Summarize your thesis, including approach, results, and main knowledge gaines; brag about what you have achieved! Speculate about future]
+% - Future work [short-, mid-, and long-term things one sould do; this can be a very valuable, and hence, longer, section]
+
+
+
+\section{Summary}
+In this thesis, we successfully showed that the \gls{ssast} can be used for \gls{sr}. Therefor the model described in \cite{gong2022ssast} has successfully been rebuilt, achieving the same loss and performance on the pretraining task. Additionally, a model has been pretrained on shuffled spectrograms.
+
+These models have then been finetuned for the downstream task of \gls{sr} on the Librispeech + VoxCeleb 1/2 dataset containing speech utterances of 10 seconds from 9593 individual speakers. With these finetuned models, it was possible to further investigate the potential of transformers to learn \gls{sst}.
+
+The finetuned models developed for this thesis did not reach state-of-the-art performance in \gls{sr}. Several factors have been identified that could improve the performance.
+
+Nevertheless, the results of this work do show the potential of using shuffled audio data to train \gls{sr} systems. In this work, such models outperformed the models trained on original data.
+
+\section{Future Work}
+
+Future research should focus on several factors to improve the performance of transformers for \gls{sr} as well as the understanding of the degree to which they are able to model \gls{sst} in \gls{sr} related tasks.
+
+\subsection{Architecture Enhancement}
+Future work could benefit from experimenting with different transformer network architectures to capture temporal dependencies more effectively. Variants such as the \gls{vit} or Swin Transformer could be explored.
+
+\subsection{Hyperparameter Tuning}
+Systematic tuning of hyperparameters, including learning rate, batch size, and network architecture, is essential. Advanced techniques such as Bayesian optimization or grid search could be employed to identify optimal configurations.
+
+\subsection{Extended Training Duration}
+Increasing the training duration may allow models to reach better performance by avoiding convergence to local minima. Long-term training with regular evaluation checkpoints can provide insights into performance trends and potential improvements.
+
+\subsection{Advanced Pooling Strategies}
+Investigating different pooling strategies and dimensions for the finetuning head might yield better speaker representation embeddings. Techniques such as attention pooling or learnable pooling parameters could be tested.
+
+\subsection{Enhanced Contrastive Learning}
+Refining the contrastive learning approach, possibly through the use of larger batch sizes or more sophisticated contrastive loss functions, might lead to improved speaker representations. Hard negative mining could further improve the learning process.
+
+By addressing these areas, future research can build upon the findings of this thesis and might find an answer to falsifiable the potential of transformer networks to learn \gls{sst}.
